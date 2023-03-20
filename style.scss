@@ -1,0 +1,178 @@
+@use "_reset.scss";
+
+$primary-500:hsl(225, 100%, 94%);
+$primary-400:hsl(245, 75%, 52%);
+
+$neutral-600:hsl(225, 100%, 98%);
+$neutral-500:hsl(224, 23%, 55%);
+$neutral-400:hsl(223, 47%, 23%);
+
+body{
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    background-color: $primary-500;
+    background-image: url(images/pattern-background-mobile.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    margin-block: auto;
+}
+
+.mainWrapper{
+    max-width: 90vw;
+    margin: auto;
+    margin-block: 2rem;
+    background-color: $neutral-600;
+    border-radius: 15px;
+}
+
+.heroImage{
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.cardContent{
+    padding: 1rem;
+    
+}
+h1{
+    text-align: center;
+    color: $neutral-400;
+    font-size: clamp(1rem, 6vw, 3rem);
+}
+.mainParagraph{
+    text-align: center;
+    color: $neutral-500;
+    font-size: clamp(0.75rem, 4vw, 1.5rem);
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+}
+
+.cardGrid{
+    display: grid;
+    background-color: rgba($primary-500, 0.4);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-block: 0.5rem;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr 1fr;
+    place-items: center;
+    grid-template-areas: 
+    "musicImage heading2 heading2 heading2 link"
+    "musicImage heading3 heading3 heading3 link";
+    img{
+        grid-area: musicImage;
+
+    }
+    h2{
+        grid-area: heading2;
+        font-size: clamp(0.75rem, 4vw, 1.5rem);
+        font-weight: 900;
+        margin-right: 0.5em;
+    }
+    h3{
+       grid-area: heading3; 
+       font-size: clamp(0.75rem, 4vw, 1.5rem);
+       font-weight: 500;
+       margin-right: 0.5em;
+    }
+    a{
+        grid-area: link;
+        color: $primary-400;
+        font-weight: 700;
+        font-size: clamp(0.75rem, 4vw, 1.5rem);
+        &:hover,
+        &:focus-within{
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: 700;
+            transition: 500ms ease-in-out;
+        }
+    }
+}
+
+.button{
+    background-color: $primary-400;
+    border-radius: 10px;
+    border: 0;
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0px 5px 10px rgba($primary-400, 0.3);
+    a{
+        color: $primary-500;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        padding: 0.5em 0em;
+    }
+    &:hover,
+    &:focus-within{
+        background-color: rgba($primary-400, $alpha: 0.7);
+        transition: 200ms ease-in-out;
+    }
+}
+.button[data-type="reversed"]{
+    background-color: transparent;
+    margin-top: 0rem;
+    margin-bottom: .5rem;
+    box-shadow: none;
+    a{
+        color: $neutral-500;
+        font-weight: 700;
+    }
+    &:hover,
+    &:focus-within{
+        a{
+            color:$neutral-400;
+            transition: 200ms ease-in-out;
+        }
+        
+    }
+}
+
+@media only screen and (min-width:400px){
+    .mainWrapper{
+        max-width: 400px;
+    }
+    h1{
+        font-size: clamp(1rem, 8vw, 2rem);
+    }
+    .mainParagraph{
+        font-size: clamp(.75rem, 4vw, 1.125rem);
+        max-width: 90%;
+        margin-inline: auto;
+    }
+    .cardGrid{
+        h2,
+        h3,
+        a{
+            font-size: clamp(.75rem, 4vw, 1.125rem);  
+        }
+        h2,h3{
+            margin-right: auto;
+            margin-left: 1rem;
+        }
+    }
+    .button{
+        a{
+            font-size: clamp(.75rem, 4vw, 1.125rem);  
+        }
+    }
+    
+}
+
+@media only screen and (min-width:1024px){
+    body{
+        background-image: url(images/pattern-background-desktop.svg);
+    }
+
+    
+}
